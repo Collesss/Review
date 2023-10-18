@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Review.Api.Dto.Account.Request;
+using Review.Api.Dto.Account.Response;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Review.Api.Controllers
 {
@@ -13,10 +18,16 @@ namespace Review.Api.Controllers
             _logger = logger;
         }
 
-
-        public void Authenticate()
+        [AllowAnonymous]
+        public TokensResponseDto Authenticate(UserRequestDto userRequestDto)
         {
+            return null;
+        }
 
+        [Authorize(AuthenticationSchemes = $"{JwtBearerDefaults.AuthenticationScheme}1")]
+        public TokensResponseDto UpdateTokens()
+        {
+            return null;
         }
     }
 }
